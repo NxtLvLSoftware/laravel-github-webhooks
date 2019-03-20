@@ -62,11 +62,11 @@ github application with this webhook url. Your controller method should then loo
 ```php
 public function index(Request $request): void
 {
-    GithubWebhooks::handleRequest($request);
+    GitHubWebhooks::handleRequest($request);
 }
 ```
 
-If a webhook was received that there is no handler configured for the `GithubWebhooks::handleRequest()` will throw a `Symfony\Component\HttpKernel\Exception\NotFoundHttpException`
+If a webhook was received that there is no handler configured for the `GitHubWebhooks::handleRequest()` will throw a `Symfony\Component\HttpKernel\Exception\NotFoundHttpException`
 that will cause the webhook delivery to fail with a 404 error. You should catch this exception from your controller method
 to implement any logging fo unhandled events.
 
@@ -74,13 +74,13 @@ to implement any logging fo unhandled events.
 
 You should set the webhook payload type that which you're expecting (the default is currently array payloads):
 ```php
-GithubWebhooks::useObjectPayloads(); // payload will be \stdObject
-GithubWebhooks::useArrayPayloads(); // payload will be an array
+GitHubWebhooks::useObjectPayloads(); // payload will be \stdObject
+GitHubWebhooks::useArrayPayloads(); // payload will be an array
 ```
 
 You can also implement your own payload class if you want to accept another format or parse the json differently:
 ```php
-GithubWebhooks::usePayload(YourPayload::class);
+GitHubWebhooks::usePayload(YourPayload::class);
 ```
 
 ### Issues
