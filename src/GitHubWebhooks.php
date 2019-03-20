@@ -3,10 +3,12 @@
 namespace nxtlvlsoftware\githubwebhooks;
 
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use nxtlvlsoftware\githubwebhooks\handler\AbstractWebhookHandler;
 use ReflectionClass;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function array_map;
 use function class_exists;
 use function explode;
@@ -21,6 +23,22 @@ class GitHubWebhooks
     public function __construct(Application $app)
     {
         $this->app = $app;
+    }
+
+    /**
+     * Handle a github webhook http request.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function handleRequest(Request $request): void
+    {
+        if (($handler = $this->resolve($request->header('X-GitHub-Event'))) === null) {
+            throw new NotFoundHttpException('Unhandled webhook event.');
+        }
+
+        $handler->handle($this->app->get(WebhookPayload::class));
     }
 
     /**
