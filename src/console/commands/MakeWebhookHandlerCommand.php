@@ -47,7 +47,7 @@ class MakeWebhookHandlerCommand extends Command
     public function handle(): void
     {
         if (($class = $this->tryResolveHandler()) === null) {
-            $this->error('Unknown GitHub webhook event \'' . $this->argument('event') . '\'. Run github-webook:list to view available events names.');
+            $this->error('Unknown GitHub webhook event \'' . $this->argument('event') . '\'. Run github-webhook:list to view available events names.');
             return;
         }
 
