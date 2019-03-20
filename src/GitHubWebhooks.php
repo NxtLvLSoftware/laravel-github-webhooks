@@ -73,9 +73,7 @@ class GitHubWebhooks
     {
         $reflection = new ReflectionClass($class);
         if (is_subclass_of($class, AbstractWebhookHandler::class) and !$reflection->isAbstract() and $reflection->getParentClass()->getName() !== AbstractWebhookHandler::class) {
-            $this->app->singleton($reflection->getParentClass()->getName(), function () use($class) {
-                return new $class;
-            });
+            $this->app->bind($reflection->getParentClass()->getName(), $class);
         }
     }
 
