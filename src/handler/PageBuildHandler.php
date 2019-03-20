@@ -19,7 +19,7 @@ abstract class PageBuildHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function built(WebhookPayload $payload): void
+    protected function built(WebhookPayload $payload): void
     {
         //
     }
@@ -29,7 +29,7 @@ abstract class PageBuildHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function error(WebhookPayload $payload): void
+    protected function error(WebhookPayload $payload): void
     {
         //
     }

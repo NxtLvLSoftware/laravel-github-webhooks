@@ -14,7 +14,7 @@ abstract class WatchHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function stared(WebhookPayload $payload): void
+    protected function stared(WebhookPayload $payload): void
     {
         //
     }

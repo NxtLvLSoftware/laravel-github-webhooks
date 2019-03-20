@@ -17,7 +17,7 @@ abstract class RepositoryImportHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function success(WebhookPayload $payload): void
+    protected function success(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class RepositoryImportHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function cancelled(WebhookPayload $payload): void
+    protected function cancelled(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class RepositoryImportHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function failure(WebhookPayload $payload): void
+    protected function failure(WebhookPayload $payload): void
     {
         //
     }

@@ -17,7 +17,7 @@ abstract class OrgBlockHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function blocked(WebhookPayload $payload): void
+    protected function blocked(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class OrgBlockHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unblocked(WebhookPayload $payload): void
+    protected function unblocked(WebhookPayload $payload): void
     {
         //
     }

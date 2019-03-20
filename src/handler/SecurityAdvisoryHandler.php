@@ -17,7 +17,7 @@ abstract class SecurityAdvisoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function published(WebhookPayload $payload): void
+    protected function published(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class SecurityAdvisoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function updated(WebhookPayload $payload): void
+    protected function updated(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class SecurityAdvisoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function performed(WebhookPayload $payload): void
+    protected function performed(WebhookPayload $payload): void
     {
         //
     }

@@ -17,7 +17,7 @@ abstract class RepositoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function created(WebhookPayload $payload): void
+    protected function created(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class RepositoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function deleted(WebhookPayload $payload): void
+    protected function deleted(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class RepositoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function archived(WebhookPayload $payload): void
+    protected function archived(WebhookPayload $payload): void
     {
         //
     }
@@ -47,7 +47,7 @@ abstract class RepositoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unarchived(WebhookPayload $payload): void
+    protected function unarchived(WebhookPayload $payload): void
     {
         //
     }
@@ -57,7 +57,7 @@ abstract class RepositoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function publicized(WebhookPayload $payload): void
+    protected function publicized(WebhookPayload $payload): void
     {
         //
     }
@@ -67,7 +67,7 @@ abstract class RepositoryHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function privatized(WebhookPayload $payload): void
+    protected function privatized(WebhookPayload $payload): void
     {
         //
     }

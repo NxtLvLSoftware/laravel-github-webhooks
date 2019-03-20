@@ -19,7 +19,7 @@ abstract class DeleteHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function deleted(WebhookPayload $payload): void
+    protected function deleted(WebhookPayload $payload): void
     {
         //
     }

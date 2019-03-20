@@ -17,7 +17,7 @@ abstract class ProjectCardHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function created(WebhookPayload $payload): void
+    protected function created(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class ProjectCardHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function updated(WebhookPayload $payload): void
+    protected function updated(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class ProjectCardHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function moved(WebhookPayload $payload): void
+    protected function moved(WebhookPayload $payload): void
     {
         //
     }
@@ -47,7 +47,7 @@ abstract class ProjectCardHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function converted(WebhookPayload $payload): void
+    protected function converted(WebhookPayload $payload): void
     {
         //
     }
@@ -57,7 +57,7 @@ abstract class ProjectCardHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function deleted(WebhookPayload $payload): void
+    protected function deleted(WebhookPayload $payload): void
     {
         //
     }

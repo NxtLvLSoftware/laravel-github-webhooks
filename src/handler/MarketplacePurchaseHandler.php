@@ -17,7 +17,7 @@ abstract class MarketplacePurchaseHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function purchased(WebhookPayload $payload): void
+    protected function purchased(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class MarketplacePurchaseHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function cancelled(WebhookPayload $payload): void
+    protected function cancelled(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class MarketplacePurchaseHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function pendingCharge(WebhookPayload $payload): void
+    protected function pendingCharge(WebhookPayload $payload): void
     {
         //
     }
@@ -47,7 +47,7 @@ abstract class MarketplacePurchaseHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function pendingChargeCancelled(WebhookPayload $payload): void
+    protected function pendingChargeCancelled(WebhookPayload $payload): void
     {
         //
     }
@@ -57,7 +57,7 @@ abstract class MarketplacePurchaseHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function charged(WebhookPayload $payload): void
+    protected function charged(WebhookPayload $payload): void
     {
         //
     }

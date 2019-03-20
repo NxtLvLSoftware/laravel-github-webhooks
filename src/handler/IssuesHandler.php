@@ -17,7 +17,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function created(WebhookPayload $payload): void
+    protected function created(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function edited(WebhookPayload $payload): void
+    protected function edited(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function deleted(WebhookPayload $payload): void
+    protected function deleted(WebhookPayload $payload): void
     {
         //
     }
@@ -47,7 +47,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function transferred(WebhookPayload $payload): void
+    protected function transferred(WebhookPayload $payload): void
     {
         //
     }
@@ -57,7 +57,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function pinned(WebhookPayload $payload): void
+    protected function pinned(WebhookPayload $payload): void
     {
         //
     }
@@ -67,7 +67,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unpinned(WebhookPayload $payload): void
+    protected function unpinned(WebhookPayload $payload): void
     {
         //
     }
@@ -77,7 +77,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function closed(WebhookPayload $payload): void
+    protected function closed(WebhookPayload $payload): void
     {
         //
     }
@@ -87,7 +87,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function reopened(WebhookPayload $payload): void
+    protected function reopened(WebhookPayload $payload): void
     {
         //
     }
@@ -97,7 +97,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function assigned(WebhookPayload $payload): void
+    protected function assigned(WebhookPayload $payload): void
     {
         //
     }
@@ -107,7 +107,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unassigned(WebhookPayload $payload): void
+    protected function unassigned(WebhookPayload $payload): void
     {
         //
     }
@@ -117,7 +117,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function labeled(WebhookPayload $payload): void
+    protected function labeled(WebhookPayload $payload): void
     {
         //
     }
@@ -127,7 +127,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unlabeled(WebhookPayload $payload): void
+    protected function unlabeled(WebhookPayload $payload): void
     {
         //
     }
@@ -137,7 +137,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function milestoned(WebhookPayload $payload): void
+    protected function milestoned(WebhookPayload $payload): void
     {
         //
     }
@@ -147,7 +147,7 @@ abstract class IssuesHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unmilestoned(WebhookPayload $payload): void
+    protected function unmilestoned(WebhookPayload $payload): void
     {
         //
     }

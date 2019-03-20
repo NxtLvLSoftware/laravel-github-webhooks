@@ -19,7 +19,7 @@ abstract class DeploymentHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function deployed(WebhookPayload $payload): void
+    protected function deployed(WebhookPayload $payload): void
     {
         //
     }

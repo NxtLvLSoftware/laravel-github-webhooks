@@ -17,7 +17,7 @@ abstract class ReleaseHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function published(WebhookPayload $payload): void
+    protected function published(WebhookPayload $payload): void
     {
         //
     }

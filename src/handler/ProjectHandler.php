@@ -17,7 +17,7 @@ abstract class ProjectHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function created(WebhookPayload $payload): void
+    protected function created(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class ProjectHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function edited(WebhookPayload $payload): void
+    protected function edited(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class ProjectHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function deleted(WebhookPayload $payload): void
+    protected function deleted(WebhookPayload $payload): void
     {
         //
     }
@@ -47,7 +47,7 @@ abstract class ProjectHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function closed(WebhookPayload $payload): void
+    protected function closed(WebhookPayload $payload): void
     {
         //
     }
@@ -57,7 +57,7 @@ abstract class ProjectHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function reopened(WebhookPayload $payload): void
+    protected function reopened(WebhookPayload $payload): void
     {
         //
     }

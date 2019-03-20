@@ -17,7 +17,7 @@ abstract class CheckSuiteHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function completed(WebhookPayload $payload): void
+    protected function completed(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class CheckSuiteHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function requested(WebhookPayload $payload): void
+    protected function requested(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class CheckSuiteHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function rerequested(WebhookPayload $payload): void
+    protected function rerequested(WebhookPayload $payload): void
     {
         //
     }

@@ -17,7 +17,7 @@ abstract class MembershipHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function added(WebhookPayload $payload): void
+    protected function added(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class MembershipHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function removed(WebhookPayload $payload): void
+    protected function removed(WebhookPayload $payload): void
     {
         //
     }

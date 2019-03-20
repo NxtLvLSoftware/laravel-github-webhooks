@@ -19,7 +19,7 @@ abstract class StatusHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function pending(WebhookPayload $payload): void
+    protected function pending(WebhookPayload $payload): void
     {
         //
     }
@@ -29,7 +29,7 @@ abstract class StatusHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function success(WebhookPayload $payload): void
+    protected function success(WebhookPayload $payload): void
     {
         //
     }
@@ -39,7 +39,7 @@ abstract class StatusHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function failure(WebhookPayload $payload): void
+    protected function failure(WebhookPayload $payload): void
     {
         //
     }
@@ -49,7 +49,7 @@ abstract class StatusHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function error(WebhookPayload $payload): void
+    protected function error(WebhookPayload $payload): void
     {
         //
     }

@@ -17,7 +17,7 @@ abstract class CheckRunEventHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function created(WebhookPayload $payload): void
+    protected function created(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class CheckRunEventHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function rerequested(WebhookPayload $payload): void
+    protected function rerequested(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class CheckRunEventHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function requestedAction(WebhookPayload $payload): void{
+    protected function requestedAction(WebhookPayload $payload): void{
         //
     }
 }

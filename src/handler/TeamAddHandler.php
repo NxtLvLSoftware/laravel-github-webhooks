@@ -19,7 +19,7 @@ abstract class TeamAddHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function added(WebhookPayload $payload): void
+    protected function added(WebhookPayload $payload): void
     {
         //
     }

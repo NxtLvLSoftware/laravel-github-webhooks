@@ -19,7 +19,7 @@ abstract class GithubAppAuthorizationHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function revoked(WebhookPayload $payload): void
+    protected function revoked(WebhookPayload $payload): void
     {
         //
     }

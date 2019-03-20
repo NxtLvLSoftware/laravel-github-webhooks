@@ -17,7 +17,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function assigned(WebhookPayload $payload): void
+    protected function assigned(WebhookPayload $payload): void
     {
         //
     }
@@ -27,7 +27,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function unassigned(WebhookPayload $payload): void
+    protected function unassigned(WebhookPayload $payload): void
     {
         //
     }
@@ -37,7 +37,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function reviewRequested(WebhookPayload $payload): void
+    protected function reviewRequested(WebhookPayload $payload): void
     {
         //
     }
@@ -47,7 +47,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function reviewRequestRemoved(WebhookPayload $payload): void
+    protected function reviewRequestRemoved(WebhookPayload $payload): void
     {
         //
     }
@@ -57,7 +57,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function reopened(WebhookPayload $payload): void
+    protected function reopened(WebhookPayload $payload): void
     {
         //
     }
@@ -67,7 +67,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function labeled(WebhookPayload $payload): void
+    protected function labeled(WebhookPayload $payload): void
     {
         //
     }
@@ -77,7 +77,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function opened(WebhookPayload $payload): void
+    protected function opened(WebhookPayload $payload): void
     {
         //
     }
@@ -87,7 +87,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function edited(WebhookPayload $payload): void
+    protected function edited(WebhookPayload $payload): void
     {
         //
     }
@@ -97,7 +97,7 @@ abstract class PullRequestHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function closed(WebhookPayload $payload): void
+    protected function closed(WebhookPayload $payload): void
     {
         //
     }

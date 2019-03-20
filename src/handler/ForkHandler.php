@@ -19,7 +19,7 @@ abstract class ForkHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function forked(WebhookPayload $payload): void
+    protected function forked(WebhookPayload $payload): void
     {
         //
     }

@@ -19,7 +19,7 @@ abstract class PublicHandler extends AbstractWebhookHandler
      *
      * @param \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload $payload
      */
-    public function public(WebhookPayload $payload): void
+    protected function public(WebhookPayload $payload): void
     {
 
     }
