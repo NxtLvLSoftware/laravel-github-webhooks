@@ -24,7 +24,7 @@ class GitHubWebhooks
     }
 
     /**
-     * Resolve the
+     * Resolve a webhook handler object from the service container by its event name.
      *
      * @param string $event
      *
@@ -42,7 +42,7 @@ class GitHubWebhooks
     }
 
     /**
-     * Register a webhook handler into the container.
+     * Register a webhook handler into the service container.
      *
      * @param string $class
      */
@@ -57,7 +57,7 @@ class GitHubWebhooks
     }
 
     /**
-     * Register a directory of webhook handlers into the handler container.
+     * Register a directory of webhook handlers into the service container.
      *
      * @param string $dir
      */
@@ -79,7 +79,7 @@ class GitHubWebhooks
     }
 
     /**
-     * Get the classname from a webhook event name.
+     * Get the corresponding handler classname from a webhook event name.
      *
      * @param string $name
      *
@@ -94,7 +94,7 @@ class GitHubWebhooks
     }
 
     /**
-     * Get the github webhook event name from a classname.
+     * Get the github webhook event name from its corresponding handler class.
      *
      * @param string $classname
      *
@@ -108,7 +108,7 @@ class GitHubWebhooks
     }
 
     /**
-     * Strip the full namespace from a class and return the bae class name.
+     * Strip the fully qualified namespace from a class and return the base/short class name.
      *
      * @param string $class
      *

@@ -37,7 +37,7 @@ class ListWebhookHandlersCommand extends Command
     }
 
     /**
-     * Scan the directory of handlers
+     * Scan the webhook handler directory and build a list of event names.
      *
      * @return array
      */

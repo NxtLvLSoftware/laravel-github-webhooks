@@ -74,8 +74,6 @@ class Generator
     /**
      * Create a blade factory for generating files.
      *
-     * @param \Illuminate\Filesystem\Filesystem $files
-     *
      * @return \Illuminate\View\Factory
      */
     private function createViewFactory(): Factory
