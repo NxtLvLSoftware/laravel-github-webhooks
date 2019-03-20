@@ -23,7 +23,7 @@ class MultipleActionTraitTest extends TestCase
 
         $this->request->expects($this->any())
             ->method('getContentType')
-            ->willReturn('application/json');
+            ->willReturn('json');
     }
 
     /**
