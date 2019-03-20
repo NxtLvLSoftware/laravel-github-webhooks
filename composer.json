@@ -1,0 +1,41 @@
+{
+    "name": "nxtlvlsoftware/laravel-github-webhooks",
+    "description": "A package to make github webhook handling in your laravel application a breeze.",
+    "type": "library",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Jack Noordhuis",
+            "email": "daswaggamer@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2.0",
+        "laravel/framework": "5.8.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "nxtlvlsoftware\\githubwebhooks\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "nxtlvlsoftware\\githubwebhooks\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "nxtlvlsoftware\\githubwebhooks\\GitHubWebhooksProvider"
+            ],
+            "aliases": {
+                "GitHubWebhooks": "nxtlvlsoftware\\githubwebhooks\\GitHubWebhooksFacade"
+            }
+        }
+    }
+}
