@@ -57,7 +57,7 @@ class MakeWebhookHandlerCommand extends Command
         $event = substr($classname, 0, strlen($classname) - 7);
 
         $methods = [];
-        foreach((new ReflectionClass($class))->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+        foreach((new ReflectionClass($class))->getMethods(ReflectionMethod::IS_PROTECTED) as $method) {
             $methods[] = $method->getName();
         }
 

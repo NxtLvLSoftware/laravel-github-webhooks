@@ -22,7 +22,7 @@ use nxtlvlsoftware\githubwebhooks\payload\WebhookPayload;
 class <?= $name ?> extends Handler
 {
 <?php foreach($methods as $method): ?>
-    public function <?= $method ?>(WebhookPayload $payload): void
+    protected function <?= $method ?>(WebhookPayload $payload): void
     {
         //
     }
