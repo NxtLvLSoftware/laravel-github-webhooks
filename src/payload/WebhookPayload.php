@@ -3,8 +3,6 @@
 namespace nxtlvlsoftware\githubwebhooks\payload;
 
 use Illuminate\Http\Request;
-use function json_last_error_msg;
-use Log;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use function json_last_error;
 use const JSON_ERROR_NONE;
