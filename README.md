@@ -52,13 +52,13 @@ Or add it directly to your composer.json manifest:
 }
 ```
 
-Composer will automatically handle registering the service provider and facade for you, but you can also register thes
+Composer will automatically handle registering the service provider and facade for you, but you can also register these
 manually if you wish.
 
 ### Usage
 
 You should register a POST API route that looks something like `https://myapp.com/api/webhook/github` and configure your
-github application with this webhook url. You controller method should then look something like:
+github application with this webhook url. Your controller method should then look something like:
 ```php
 public function index(Request $request): void
 {
@@ -66,13 +66,19 @@ public function index(Request $request): void
 }
 ```
 
+If a webhook was received that there is no handler configured for the `GithubWebhooks::handleRequest()` will throw a `Symfony\Component\HttpKernel\Exception\NotFoundHttpException`
+that will cause the webhook delivery to fail with a 404 error. You should catch this exception from your controller method
+to implement any logging fo unhandled events.
+
+#### Setting the payload type
+
 You should set the webhook payload type that which you're expecting (the default is currently array payloads):
 ```php
 GithubWebhooks::useObjectPayloads(); // payload will be \stdObject
 GithubWebhooks::useArrayPayloads(); // payload will be an array
 ```
 
-You can also implement your own payload class if you want to accept another format of parse the json differently:
+You can also implement your own payload class if you want to accept another format or parse the json differently:
 ```php
 GithubWebhooks::usePayload(YourPayload::class);
 ```
