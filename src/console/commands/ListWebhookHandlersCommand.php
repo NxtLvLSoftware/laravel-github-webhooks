@@ -2,14 +2,12 @@
 
 namespace nxtlvlsoftware\githubwebhooks\console\commands;
 
-use function dd;
 use GitHubWebhooks;
 use Illuminate\Console\Command;
 use Symfony\Component\Finder\Finder;
 use function count;
 use function implode;
 use const PHP_EOL;
-use function var_dump;
 
 class ListWebhookHandlersCommand extends Command
 {

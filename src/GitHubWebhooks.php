@@ -4,16 +4,14 @@ namespace nxtlvlsoftware\githubwebhooks;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Str;
-use function is_dir;
 use nxtlvlsoftware\githubwebhooks\handler\AbstractWebhookHandler;
 use ReflectionClass;
-use function stripos;
 use Symfony\Component\Finder\Finder;
 use function array_map;
 use function class_exists;
 use function explode;
 use function implode;
-use function var_dump;
+use function is_dir;
 
 class GitHubWebhooks
 {
@@ -49,7 +47,7 @@ class GitHubWebhooks
      * @param string $class
      */
     public function registerHandler(string $class): void
-    {var_dump($class);
+    {
         $reflection = new ReflectionClass($class);
         if (is_subclass_of($class, AbstractWebhookHandler::class) and !$reflection->isAbstract() and $reflection->getParentClass()->getName() !== AbstractWebhookHandler::class) {
             $this->app->singleton($reflection->getParentClass()->getName(), function () use($class) {
