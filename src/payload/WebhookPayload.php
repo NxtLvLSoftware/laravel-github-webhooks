@@ -2,7 +2,6 @@
 
 namespace nxtlvlsoftware\githubwebhooks\payload;
 
-use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use function json_last_error;
 use const JSON_ERROR_NONE;
@@ -12,31 +11,33 @@ use const JSON_ERROR_NONE;
  */
 abstract class WebhookPayload
 {
-    /** @var \Illuminate\Http\Request */
-    protected $request;
+    /**
+     * @var string
+     */
+    private $raw;
 
-    public function __construct(Request $request)
+    /**
+     * Set the raw webhook payload.
+     *
+     * @param string $raw
+     *
+     * @return \nxtlvlsoftware\githubwebhooks\payload\WebhookPayload
+     */
+    public function setRawPayload(string $raw): WebhookPayload
     {
-        $this->request = $request;
-    }
+        $this->raw = $raw;
 
-    public function request(): Request
-    {
-        return $this->request;
+        return $this;
     }
 
     /**
-     * Retrieve the raw payload data from the request
+     * Get the raw payload data.
      *
      * @return string|null
      */
     public function getRawPayload(): ?string
     {
-        if($this->request->getContentType() === 'json') {
-            return $this->request->getContent();
-        }
-
-        return null;
+        return $this->raw;
     }
 
     /**

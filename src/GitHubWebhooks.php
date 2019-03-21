@@ -9,9 +9,7 @@ use nxtlvlsoftware\githubwebhooks\payload\ArrayPayload;
 use nxtlvlsoftware\githubwebhooks\payload\ObjectPayload;
 use nxtlvlsoftware\githubwebhooks\payload\WebhookPayload;
 use ReflectionClass;
-use Request;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function class_exists;
 use function is_dir;
 
@@ -28,22 +26,15 @@ class GitHubWebhooks
     }
 
     /**
-     * Handle a github webhook http request.
+     * Check if there is a registered handler for a webhook event.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param string $event
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @return bool
      */
-    public function handleRequest(): void
+    public function handlesEvent(string $event): bool
     {
-        if(Request::has('X-GitHub-Event')) {
-            $handler = $this->resolve(Request::header('X-GitHub-Event'));
-            if($handler !== null) {
-                $handler->handle($this->app->make(WebhookPayload::class));
-            }
-        }
-
-        throw new NotFoundHttpException('Unhandled webhook event.');
+        return class_exists($class = $this->buildEventContractClassname($event)) and $this->app->has($class);
     }
 
     /**
@@ -55,13 +46,11 @@ class GitHubWebhooks
      */
     public function resolve(string $event): ?AbstractWebhookHandler
     {
-        $class = 'nxtlvlsoftware\githubwebhooks\handler\\' . Str::classFromGithubEventName($event);
-
-        if (!class_exists($class) or !$this->app->has($class)) {
+        if (!$this->handlesEvent($event)) {
             return null;
         }
 
-        return $this->app->make($class);
+        return $this->app->make($this->buildEventContractClassname($event));
     }
 
     /**
@@ -123,5 +112,17 @@ class GitHubWebhooks
     public function useArrayPayloads(): void
     {
         $this->usePayload(ArrayPayload::class);
+    }
+
+    /**
+     * Create the fully qualified namespace for an event contract.
+     *
+     * @param string $event
+     *
+     * @return string
+     */
+    protected function buildEventContractClassname(string $event): string
+    {
+        return'nxtlvlsoftware\githubwebhooks\handler\\' . Str::classFromGithubEventName($event);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace nxtlvlsoftware\githubwebhooks\handler;
 
-use Illuminate\Http\Request;
 use nxtlvlsoftware\githubwebhooks\handler\fixtures\MultipleActions;
 use nxtlvlsoftware\githubwebhooks\handler\fixtures\MultipleActionsNested;
 use nxtlvlsoftware\githubwebhooks\handler\fixtures\MultipleSnakeCaseActions;
@@ -11,21 +10,6 @@ use nxtlvlsoftware\githubwebhooks\TestCase;
 
 class MultipleActionTraitTest extends TestCase
 {
-    /** @var \Illuminate\Http\Request|\PHPUnit\Framework\MockObject\MockObject */
-    protected $request;
-
-    public function setUp(): void
-    {
-        $this->request = $this->getMockBuilder(Request::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getContentType', 'getContent'])
-            ->getMock();
-
-        $this->request->expects($this->any())
-            ->method('getContentType')
-            ->willReturn('json');
-    }
-
     /**
      * Make sure only the specified action is called for a multiple action handler.
      */
@@ -33,31 +17,17 @@ class MultipleActionTraitTest extends TestCase
     {
         $handler = new MultipleActions();
 
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"action": "created"}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"action": "created"}'));
         $this->assertTrue(MultipleActions::$created);
         $this->assertFalse(MultipleActions::$updated);
         $this->assertFalse(MultipleActions::$deleted);
 
-        $this->setUp();
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"action": "updated"}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"action": "updated"}'));
         $this->assertTrue(MultipleActions::$created);
         $this->assertTrue(MultipleActions::$updated);
         $this->assertFalse(MultipleActions::$deleted);
 
-        $this->setUp();
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"action": "deleted"}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"action": "deleted"}'));
         $this->assertTrue(MultipleActions::$created);
         $this->assertTrue(MultipleActions::$updated);
         $this->assertTrue(MultipleActions::$deleted);
@@ -70,31 +40,17 @@ class MultipleActionTraitTest extends TestCase
     {
         $handler = new MultipleSnakeCaseActions;
 
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"action": "created_snake_case"}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"action": "created_snake_case"}'));
         $this->assertTrue(MultipleSnakeCaseActions::$created);
         $this->assertFalse(MultipleSnakeCaseActions::$updated);
         $this->assertFalse(MultipleSnakeCaseActions::$deleted);
 
-        $this->setUp();
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"action": "updated_snake_case"}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"action": "updated_snake_case"}'));
         $this->assertTrue(MultipleSnakeCaseActions::$created);
         $this->assertTrue(MultipleSnakeCaseActions::$updated);
         $this->assertFalse(MultipleSnakeCaseActions::$deleted);
 
-        $this->setUp();
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"action": "deleted_snake_case"}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"action": "deleted_snake_case"}'));
         $this->assertTrue(MultipleSnakeCaseActions::$created);
         $this->assertTrue(MultipleSnakeCaseActions::$updated);
         $this->assertTrue(MultipleSnakeCaseActions::$deleted);
@@ -104,20 +60,11 @@ class MultipleActionTraitTest extends TestCase
     {
         $handler = new MultipleActionsNested;
 
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"this":{"is":{"a":{"nested":"action"}}}}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"this":{"is":{"a":{"nested":"action"}}}}'));
         $this->assertTrue(MultipleActionsNested::$action);
         $this->assertFalse(MultipleActionsNested::$anAction);
 
-        $this->setUp();
-        $this->request->expects($this->any())
-            ->method('getContent')
-            ->willReturn('{"this":{"is":{"a":{"nested":"anAction"}}}}');
-        $handler->handle(new ArrayPayload($this->request));
-
+        $handler->handle((new ArrayPayload())->setRawPayload('{"this":{"is":{"a":{"nested":"anAction"}}}}'));
         $this->assertTrue(MultipleActionsNested::$action);
         $this->assertTrue(MultipleActionsNested::$anAction);
     }

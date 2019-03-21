@@ -16,7 +16,7 @@ use function hash_hmac;
  */
 class VerifyGitHubWebhookSecret
 {
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if($request->hasHeader('X-Hub-Signature')) {
             // X-Hub-Signature sha1=ff67cf27f59a9067366d653fda0baf46d1adbbdc

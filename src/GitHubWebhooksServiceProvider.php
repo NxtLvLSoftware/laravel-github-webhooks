@@ -7,10 +7,13 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Str;
 use nxtlvlsoftware\githubwebhooks\console\Generator;
 use nxtlvlsoftware\githubwebhooks\console\Kernel as Console;
+use nxtlvlsoftware\githubwebhooks\http\controllers\GitHubWebhookController;
 use nxtlvlsoftware\githubwebhooks\http\middleware\VerifyGitHubWebhookSecret;
 use ReflectionClass;
+use Route;
 use function array_filter;
 use function array_map;
+use function class_exists;
 use function explode;
 use function implode;
 use function preg_split;
@@ -32,7 +35,15 @@ class GitHubWebhooksServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../config/github-webhooks.php' => config_path('github-webhooks.php')]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__ . '/../config/github-webhooks.php' => config_path('github-webhooks.php')]);
+
+            if (!class_exists('CreateGitHubWebhookEventsTable')) {
+                $this->publishes([
+                    __DIR__ . '/../database/migrations/create_github_webhook_events_table.php.stub' => database_path('migrations/' . date('Y_m_d_His') . '_create_github_webhook_events_table.php'),
+                ], 'migrations');
+            }
+        }
 
         $this->middleware();
 
@@ -58,6 +69,15 @@ class GitHubWebhooksServiceProvider extends ServiceProvider
      */
     protected function macros(): void
     {
+        /**
+         * Register the github webhook route.
+         *
+         * @param string $url
+         */
+        Route::macro('githubWebhooks', function ($url = 'webhook/github') {
+            return Route::post($url, '\\' . GitHubWebhookController::class . '@webhook');
+        });
+
         /**
          * Get the corresponding handler classname from a webhook event name.
          *
