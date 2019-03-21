@@ -2,8 +2,8 @@
 
 namespace nxtlvlsoftware\githubwebhooks\console\commands;
 
-use GitHubWebhooks;
 use Illuminate\Console\Command;
+use Str;
 use Symfony\Component\Finder\Finder;
 use function count;
 use function implode;
@@ -50,7 +50,7 @@ class ListWebhookHandlersCommand extends Command
                 continue; // skip the abstract webhook class
             }
 
-            $names[] = GitHubWebhooks::eventNameFromClass($name);
+            $names[] = Str::githubEventNameFromClass($name);
         }
 
         return $names;

@@ -2,12 +2,12 @@
 
 namespace nxtlvlsoftware\githubwebhooks\console\commands;
 
-use GitHubWebhooks;
 use Illuminate\Console\Command;
 use nxtlvlsoftware\githubwebhooks\console\Generator;
 use nxtlvlsoftware\githubwebhooks\handler\AbstractWebhookHandler;
 use ReflectionClass;
 use ReflectionMethod;
+use Str;
 use function class_exists;
 use function compact;
 use function str_replace;
@@ -52,7 +52,7 @@ class MakeWebhookHandlerCommand extends Command
         }
 
         $namespace = 'App\\' . str_replace('/', '\\', $this->option('path'));
-        $classname = GitHubWebhooks::stripFullNamespace($class);
+        $classname = Str::shortClassName($class);
         $name = $this->option('name') ?? $classname;
         $event = substr($classname, 0, strlen($classname) - 7);
 
@@ -65,19 +65,19 @@ class MakeWebhookHandlerCommand extends Command
             $this->option('path'), $name . '.php',
             'webhook_handler', compact(['namespace', 'event', 'name', 'methods']));
 
-        $this->info('Generated github webhook handler for \'' . GitHubWebhooks::eventNameFromClass($event) . '\' at \'' . $namespace . '\\' . $name . '\'');
+        $this->info('Generated github webhook handler for \'' . Str::githubEventNameFromClass($event) . '\' at \'' . $namespace . '\\' . $name . '\'');
     }
 
     protected function tryResolveHandler(): ?string
     {
         $input = trim($this->argument('event'));
-        if(!$this->checkHandlerClass($class = GitHubWebhooks::classFromEventName(str_replace(' ', '_', strtolower($input))))) {
+        if(!$this->checkHandlerClass($class = Str::classFromGithubEventName(str_replace(' ', '_', strtolower($input))))) {
             if(!$this->checkHandlerClass($class = $input . 'Handler')) {
                 if(!$this->checkHandlerClass($class = $input)) {
                     if(!$this->checkHandlerClass($input, false)) {
                         return null;
                     } else {
-                        $class = GitHubWebhooks::stripFullNamespace($input);
+                        $class = Str::shortClassName($input);
                     }
                 }
             }

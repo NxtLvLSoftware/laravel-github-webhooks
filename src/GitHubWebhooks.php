@@ -12,10 +12,7 @@ use nxtlvlsoftware\githubwebhooks\payload\WebhookPayload;
 use ReflectionClass;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use function array_map;
 use function class_exists;
-use function explode;
-use function implode;
 use function is_dir;
 
 class GitHubWebhooks
@@ -55,7 +52,7 @@ class GitHubWebhooks
      */
     public function resolve(string $event): ?AbstractWebhookHandler
     {
-        $class = 'nxtlvlsoftware\githubwebhooks\handler\\' . $this->classFromEventName($event);
+        $class = 'nxtlvlsoftware\githubwebhooks\handler\\' . Str::classFromGithubEventName($event);
 
         if (!class_exists($class) or !$this->app->has($class)) {
             return null;
@@ -123,46 +120,5 @@ class GitHubWebhooks
     public function useArrayPayloads(): void
     {
         $this->usePayload(ArrayPayload::class);
-    }
-
-    /**
-     * Get the corresponding handler classname from a webhook event name.
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    public function classFromEventName(string $name): string
-    {
-        return implode('', array_map(
-            'ucfirst',
-            explode('_', $name)
-        )) . 'Handler';
-    }
-
-    /**
-     * Get the github webhook event name from its corresponding handler class.
-     *
-     * @param string $classname
-     *
-     * @return string
-     */
-    public function eventNameFromClass(string $classname): string
-    {
-        return strtolower(implode('_', array_filter(
-            preg_split('/(?=[A-Z])/', strpos($classname, '\\') !== false ? $this->stripFullNamespace($classname) : $classname)
-        )));
-    }
-
-    /**
-     * Strip the fully qualified namespace from a class and return the base/short class name.
-     *
-     * @param string $class
-     *
-     * @return string
-     */
-    public function stripFullNamespace(string $class): string
-    {
-        return (new ReflectionClass($class))->getShortName();
     }
 }
