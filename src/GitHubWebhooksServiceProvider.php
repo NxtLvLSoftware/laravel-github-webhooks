@@ -47,10 +47,6 @@ class GitHubWebhooksServiceProvider extends ServiceProvider
 
         $this->middleware();
 
-        $this->app->singleton(GitHubWebhooks::class, function ($app) {
-            return new GitHubWebhooks($app);
-        });
-
         $this->app->singleton(Generator::class, function ($app) {
             return new Generator($app);
         });
