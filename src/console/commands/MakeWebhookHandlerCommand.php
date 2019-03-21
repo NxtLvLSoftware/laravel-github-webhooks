@@ -3,6 +3,7 @@
 namespace nxtlvlsoftware\githubwebhooks\console\commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Application;
 use nxtlvlsoftware\githubwebhooks\console\Generator;
 use nxtlvlsoftware\githubwebhooks\handler\AbstractWebhookHandler;
 use ReflectionClass;
@@ -34,11 +35,11 @@ class MakeWebhookHandlerCommand extends Command
     /** @var \nxtlvlsoftware\githubwebhooks\console\Generator */
     private $generator;
 
-    public function __construct(Generator $generator)
+    public function __construct(Application $app)
     {
         parent::__construct();
 
-        $this->generator = $generator;
+        $this->generator = new Generator($app);
     }
 
     /**
