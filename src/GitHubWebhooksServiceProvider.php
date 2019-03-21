@@ -19,7 +19,7 @@ use function strtolower;
 /**
  * Service provider for the github webhook package.
  */
-class GitHubWebhooksProvider extends ServiceProvider
+class GitHubWebhooksServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

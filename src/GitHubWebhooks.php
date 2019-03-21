@@ -34,13 +34,16 @@ class GitHubWebhooks
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function handleRequest(Request $request): void
+    public function handleRequest(): void
     {
-        if (($handler = $this->resolve($request->header('X-GitHub-Event'))) === null) {
-            throw new NotFoundHttpException('Unhandled webhook event.');
+        if(Request::has('X-GitHub-Event')) {
+            $handler = $this->resolve(Request::header('X-GitHub-Event'));
+            if($handler !== null) {
+                $handler->handle($this->app->make(WebhookPayload::class));
+            }
         }
 
-        $handler->handle($this->app->make(WebhookPayload::class));
+        throw new NotFoundHttpException('Unhandled webhook event.');
     }
 
     /**

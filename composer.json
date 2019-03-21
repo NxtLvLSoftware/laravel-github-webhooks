@@ -31,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "nxtlvlsoftware\\githubwebhooks\\GitHubWebhooksProvider"
+                "nxtlvlsoftware\\githubwebhooks\\GitHubWebhooksServiceProvider"
             ],
             "aliases": {
                 "GitHubWebhooks": "nxtlvlsoftware\\githubwebhooks\\GitHubWebhooksFacade"
