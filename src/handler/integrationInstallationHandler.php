@@ -8,7 +8,7 @@ use nxtlvlsoftware\githubwebhooks\payload\WebhookPayload;
 /**
  * Contract for the github installation event. https://developer.github.com/v3/activity/events/types/#installationevent
  */
-abstract class InstallationHandler extends AbstractWebhookHandler
+abstract class integrationInstallationHandler extends AbstractWebhookHandler
 {
     use HasMultipleActions;
 
